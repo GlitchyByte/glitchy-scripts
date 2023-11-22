@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Copyright 2023 GlitchyByte
+# SPDX-License-Identifier: MIT
+
+# Creates the final scripts.
+
+# [Setup]
+set -u
+set -e
+# Capture caller directory and script directory.
+readonly calling_dir="${PWD}"
+readonly script_dir="$(cd "$(dirname "$0")" && pwd)"
+# Go to script directory and load utilities.
+cd "${script_dir}"
+. ./src/_gcolors
+
+readonly cc_text="$(color256 2 2 2)"
+readonly cc_name="$(color256 2 5 2)"
+
+# [Main]
+
+# Cleanup directory.
+rm -dr scripts
+mkdir scripts
+
+# tinytoken
+echo "${cc_text}Copying: ${cc_name}tinytoken${c_reset}"
+cp src/tinytoken scripts/
+
+# checkfix
+echo "${cc_text}Merging: ${cc_name}checkfix${c_reset}"
+sed -e '/\. \.\/_gcolors/ {r src/_gcolors' -e 'd;}' src/checkfix > scripts/checkfix
+chmod u+x scripts/checkfix
+
+# [Teardown]
+cd "${calling_dir}"
