@@ -2,7 +2,7 @@
 # Copyright 2023 GlitchyByte
 # SPDX-License-Identifier: MIT
 
-# checkfix v1.0.0
+# checkfix v1.1.0
 
 # [Setup]
 set -u
@@ -114,9 +114,9 @@ readonly cc_line="$(color256 5 3 0)"
 # [Main]
 echo "${cc_text}Scanning: ${cc_dir}${scan_dir}${c_reset}"
 
-egrep -rnI --exclude-dir=".*" "// +TODO:|// +FIXME:" "${scan_dir}" | \
+egrep -rnI --exclude-dir=".*" "(//|#|\*|;) +(TODO|FIXME)[: ]" "${scan_dir}" | \
   awk -v cc_path="${cc_text}" -v cc_line="${cc_line}" -v c_reset="${c_reset}" -F: \
-    '{print cc_path $1":"$2; sub(/^ +/,"",$3); printf "%s%s",cc_line,$3; for (i = 4; i <= NF; i++) printf "%s",$i; print c_reset}'
+    '{print cc_path $1":"$2; sub(/^ +/,"",$3); printf "%s%s",cc_line,$3; for (i = 4; i <= NF; i++) printf ":%s",$i; print c_reset}'
 
 # [Teardown]
 cd "${calling_dir}"
