@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: MIT
 
 # tinytoken v1.0.1
-set -u
+set -u # Exit with an error if a variable is used without being set.
 
 # Generate a time-based code.
 # Unique per project as long as it's used with the same salt.

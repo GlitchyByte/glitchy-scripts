@@ -2,7 +2,7 @@
 # Copyright 2023 GlitchyByte
 # SPDX-License-Identifier: MIT
 
-# checkfix v1.1.0
+# checkfix v1.1.1
 
 # [Setup]
 set -u # Exit with an error if a variable is used without being set.

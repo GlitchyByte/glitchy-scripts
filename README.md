@@ -20,7 +20,7 @@ my_var=$(./tinytoken MY_SALT)
 ```
 
 ## checkfix
-![Version](https://img.shields.io/badge/Version-1.1.0-blue)
+![Version](https://img.shields.io/badge/Version-1.1.1-blue)
 
 `checkfix` is a bash script to report `TODO` and `FIXME` comments in your code.
 
